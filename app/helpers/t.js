@@ -25,6 +25,8 @@ export default function tHelper(params, hash, options, env) {
   if (path.isStream) {
     path.subscribe(stream.notify, stream);
   }
-
+  if(options.template.yieldIn == undefined){
+    return stream.compute(); //this is a hack to make it work if its being called as param to another template, if everything is horriblely broken look here
+  }
   return stream;
 }
